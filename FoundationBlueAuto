@@ -9,13 +9,13 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-import org.firstinspires.ftc.teamcode.BasicLinearOp;
+
 
 import java.nio.channels.DatagramChannel;
 
 @Autonomous(name = "Foundation Auto Blue", group = "Autonomous")
 //@Disabled
-public class FoundationBlueAuto extends BasicLinearOp {
+public class FoundationBlueAuto extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDriveFront = null;
@@ -108,7 +108,7 @@ public class FoundationBlueAuto extends BasicLinearOp {
                 }
 
                 if(!start && !third && !fifth && !stop){
-                    if(leftDriveFront.getCurrentPosition() >= 750 && rightDriveFront.getCurrentPosition() >= 950){
+                    if(leftDriveFront.getCurrentPosition() >= 700 && rightDriveFront.getCurrentPosition() >= 850){
                         second = false;
                         setPower(0);
                         foundation(0);
@@ -116,7 +116,7 @@ public class FoundationBlueAuto extends BasicLinearOp {
 
                     } else if(second) {
                         foundation(1);
-                        moveToPos(1100,1400);
+                        moveToPos(900,1200);
 
                     }
                 }
@@ -124,32 +124,30 @@ public class FoundationBlueAuto extends BasicLinearOp {
 
 
                 if (!start && !third && !second && !fifth && !stop){
-                    if(leftDriveBack.getCurrentPosition() >= 550 && rightDriveFront.getCurrentPosition() >= 550){
+                    if(leftDriveBack.getCurrentPosition() >= 1900 && rightDriveFront.getCurrentPosition() >= 1900){
                         fourth = false;
                         setPower(0);
                         resetEncoders();
                     } else if(fourth){
-                        mecanumTargets(-400,700,700,-700);
-
+                        mecanumTargets(-1700,1900,1900,-1900);
                     }
                 }
 
                 if (!start && !third && !second && !fifth && !fourth && !stop){
-                    if(leftDriveFront.getCurrentPosition() >= 25 && rightDriveFront.getCurrentPosition() >= 0){
+                    if(leftDriveFront.getCurrentPosition() <= 2000  && rightDriveFront.getCurrentPosition() >= -2000){
                         sixth = false;
                         setPower(0);
-                        resetEncoders();
-                        FLWheel.setPower(0);
+                        //FLWheel.setPower(1);
                     } else if(sixth){
-                        FLWheel.setPower(1.0);
-                        moveToPos(100,50);
+                        //FLWheel.setPower(1.0);
+                        mecanumTargets(-1700, 2000, 2000, -2000);
+                        telemetry.addLine("Hello!");
 
                     }
 
                 }
 
 /*
-
                 if (!start && !third && !second && !fifth && !fourth && !sixth && !stop){
                     if(leftDriveBack.getCurrentPosition() >= 1350 && rightDriveFront.getCurrentPosition() >= 1350){
                         seventh = false;
@@ -157,12 +155,10 @@ public class FoundationBlueAuto extends BasicLinearOp {
                         //FLWheel.setPower(0);
                     } else if(seventh){
                         //FLWheel.setPower(1.0);
-                        mecanumTargets(-500,1500,1500,-1250);
+                        mecanumTargets(-1700,2000,2000,-2000);
 
                     }
                 }
-
-
 */
 
 
@@ -201,7 +197,8 @@ public class FoundationBlueAuto extends BasicLinearOp {
         }
 
     }
-
+    
+    
     public void foundation (int grab) {
         if(grab == 1) {
             rF.setPosition(0.0);
