@@ -124,7 +124,7 @@ public class FoundationBlueAuto extends LinearOpMode {
 
 
                 if (!start && !third && !second && !fifth && !stop){
-                    if(leftDriveBack.getCurrentPosition() >= 1900 && rightDriveFront.getCurrentPosition() >= 1900){
+                    if(leftDriveBack.getCurrentPosition() >= 1600 && rightDriveFront.getCurrentPosition() >= 1550){
                         fourth = false;
                         setPower(0);
                         resetEncoders();
@@ -134,13 +134,13 @@ public class FoundationBlueAuto extends LinearOpMode {
                 }
 
                 if (!start && !third && !second && !fifth && !fourth && !stop){
-                    if(leftDriveFront.getCurrentPosition() <= 2000  && rightDriveFront.getCurrentPosition() >= -2000){
+                    if(leftDriveFront.getCurrentPosition() <= -100  && rightDriveFront.getCurrentPosition() >= 50){
                         sixth = false;
                         setPower(0);
                         //FLWheel.setPower(1);
                     } else if(sixth){
                         //FLWheel.setPower(1.0);
-                        mecanumTargets(-1700, 2000, 2000, -2000);
+                        moveToPos(200,100);
                         telemetry.addLine("Hello!");
 
                     }
