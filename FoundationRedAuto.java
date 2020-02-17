@@ -116,7 +116,7 @@ public class FoundationRedAuto extends BasicLinearOp {
                 }
 
                 if(!start && !third && !fifth && !stop){
-                    if(leftDriveFront.getCurrentPosition() >= 900 && rightDriveFront.getCurrentPosition() >= 1900){
+                    if(leftDriveFront.getCurrentPosition() >= 890 && rightDriveFront.getCurrentPosition() >= 1000){
                         second = false;
                         setPower(0);
                         foundation(0);
@@ -124,7 +124,7 @@ public class FoundationRedAuto extends BasicLinearOp {
 
                     } else if(second) {
                         foundation(1);
-                        moveToPos(1000,2000);
+                        moveToPos(1000,1200);
 
                     }
                 }
@@ -143,15 +143,16 @@ public class FoundationRedAuto extends BasicLinearOp {
 
 
                 if (!start && !third && !second && !fifth && !fourth && !stop){
-                    if(leftDriveFront.getCurrentPosition() >= 25 && rightDriveFront.getCurrentPosition() >= 0){
+                    if(leftDriveFront.getCurrentPosition() >= 2000 && rightDriveFront.getCurrentPosition() >= 2000){
                         sixth = false;
                         setPower(0);
                         resetEncoders();
                         FLWheel.setPower(0);
                     } else if(sixth){
                         FLWheel.setPower(1.0);
-                        moveToPos(100,75);
-
+                        FRWheel.setPower(1.0);
+                        telemetry.addLine("Flex");
+                        mecanumTargets(1700,-1900,-1900,1900);
                     }
 
                 }
@@ -167,10 +168,8 @@ public class FoundationRedAuto extends BasicLinearOp {
                     } else if(seventh){
                         //FLWheel.setPower(1.0);
                         mecanumTargets(500,-1500,-1500,1250);
-
                     }
                 }
-
 */
 
 
