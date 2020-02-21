@@ -9,13 +9,13 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-import org.firstinspires.ftc.teamcode.BasicLinearOp;
+
 
 import java.nio.channels.DatagramChannel;
 
 @Autonomous(name = "Park Line Auto", group = "Autonomous")
 //@Disabled
-public class ParkLineAuto extends BasicLinearOp {
+public class ParkLineAuto extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDriveFront = null;
@@ -63,6 +63,9 @@ public class ParkLineAuto extends BasicLinearOp {
 
 
         while (opModeIsActive()) {
+            
+            sleep(6000);
+            
 
             if((leftDriveFront.getCurrentPosition() >= 750 && rightDriveFront.getCurrentPosition() >= 750)){
                 setPower(0);
